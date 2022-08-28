@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use NotificationChannels\ExpoPushNotifications\ExpoChannel;
+use NotificationChannels\ExpoPushNotifications\Events\ExpoSubscribed;
 
 class ExpoController extends Controller
 {
@@ -61,6 +62,8 @@ class ExpoController extends Controller
                 ],
             ], 500);
         }
+
+        event(new ExpoSubscribed($token));
 
         return new JsonResponse([
             'status'    =>  'succeeded',
