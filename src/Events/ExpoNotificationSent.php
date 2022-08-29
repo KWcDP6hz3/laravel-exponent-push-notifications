@@ -22,12 +22,20 @@ class ExpoNotificationSent
     public $response;
 
     /**
+     * The interests where the notification was sent to
+     * 
+     * @var array
+     */
+    public $interests;
+
+    /**
      * ExpoNotificationSent constructor.
      *
      * @param  array  $response
      */
-    public function __construct(array $response = array())
+    public function __construct(array $interests = array(), array $response = array())
     {
+        $this->interests = $interests;
         $this->response = $response;
     }
 }
